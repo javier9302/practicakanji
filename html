@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Memorizador de Kanji</title>
+  <link rel="stylesheet" href="../styles.css"/>
+</head>
+<body>
+  <body>
+  <div class="main-container">
+    <h1 style="text-align: center;">Aplicacion para aprender Kanji</h1>
+    <div class="dividir-pantalla">
+      <div class="lado-izquierdo">
+      <div class="kanji-display" id="kanji-display">
+        <!-- Kanji will appear here -->
+      </div>
+
+      <!-- Dividir en dos columnas -->
+         <!-- IZQUIERDA -->
+        
+          <div class="input-group">
+            <input type="text" id="answer-input" placeholder="ひらがな..." autocomplete="off" onkeydown="checkEnter(event)">
+            <div class="botones-container">
+              <button onclick="verificar()" class="submit-btn" id="verificar-hiragana">Verificar</button>
+              <button onclick="siguiente()" class="submit-btn" id="siguiente-palabra">Siguiente</button>
+              <div id="checkbox-container" class="checkbox-container"><input type="checkbox" id="palabra-aprendida" > Repasar despues</div>
+            </div>
+            
+          </div>
+        </div>
+
+        <!-- DERECHA -->
+        <div class="lado-derecho">
+          <div class="feedback" id="feedback"></div>
+
+          <div class="progress-container">
+            <div class="progress-bar">
+              <div class="progress-fill" id="progress-fill"></div>
+            </div>
+            <div id="progress-text">0/20 correct</div>
+          </div>
+
+          <div class="info-panel">
+            <div class="info-row"><strong>Lectura:</strong> <span id="hiragana-display"></span></div>
+            <div class="info-row"><strong>Significado:</strong> <span id="meaning-display"></span></div>
+            <div class="info-row"><strong>Por ejemplo:</strong> <span id="example-display"></span></div>
+            <div class="info-row"><strong>Traducción:</strong> <span id="translation-display"></span></div>
+          </div>
+
+      </div>
+      <div class="botones-container">
+        <button Id="reiniciar" class="submit-btn fin-juego-btn">Reiniciar</button>
+        <button id="nuevas" class="submit-btn fin-juego-btn">Nuevas Palabras</button>
+      </div>
+      </div> <!-- Fin dividir-pantalla -->
+
+    
+  </div> <!-- Fin main-container -->
+  <script src="game.js"></script> 
+  <script src="https://unpkg.com/wanakana"></script>
+  <script>
+    const input = document.getElementById('answer-input');
+    wanakana.bind(input, { IMEMode: true }); 
+    </script>
+</body>
+</html>
