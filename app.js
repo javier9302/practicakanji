@@ -143,7 +143,7 @@ document.addEventListener('DOMContentLoaded', () => {
     localStorage.setItem('matchedWords', JSON.stringify(matchedWords));
     
     //Redirigir
-    window.location.href = 'game.html';
+    window.location.href = './game.html';
   });
 
 });
