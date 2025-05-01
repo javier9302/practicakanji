@@ -118,12 +118,12 @@ document.addEventListener('DOMContentLoaded', () => {
     if(modoEscogido===40){
       modalidadEscogida = {
       puntajemaximo: document.getElementById('repeticiones-aprender').value,
-      puntosError: document.getElementById('repasar-veces').value,
+      puntosError: document.getElementById('repasar-veces').value
       }
     }else { 
       modalidadEscogida = {
       puntajemaximo: (document.getElementById('repasar-veces').value),
-      puntosError: document.querySelector('#repasar-errores').checked ? 1 : 0,
+      puntosError: document.querySelector('#repasar-errores').checked ? 1 : 0
     };
   }
     //Guardar la modalidad 
