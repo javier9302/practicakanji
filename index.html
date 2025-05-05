@@ -6,21 +6,21 @@
   <title>My Project</title>
   <!-- Link to external CSS -->
   <link rel="stylesheet" href="styles.css">
-  <script type="module" src="app.js"></script>
-</head>
+  <script type="module" src="app.js" ></script>
+  </head>
 <body>
     <div class="container">
         <h1>Estudiar Kanjis</h1>
         <div id="panel-opciones">
             <div class="botones-container">
-            <button id="aprender-btn" class="submit-btn">Aprender</button>
-            <button id="repasar-btn" class="submit-btn">Repasar</button>
+            <button id="aprender-btn" class="submit-btn modo-btn">Aprender</button>
+            <button id="repasar-btn" class="submit-btn modo-btn">Repasar</button>
             </div>
           </div>
-          <div id="aprender-container" class="hidden opciones-container">
+          <div id="aprender-container" class="opciones-container">
             <p><strong>Escoge máximo 40 Kanjis para estudiar.</strong> Hemos limitado este número porque es la recomendación para que el proceso sea simple y fácil de memorizar.</p>
             <label>Cada vez que aciertes, tienes 1 punto. ¿Cuántas veces quieres repetir cada uno?
-              <select id="repeticiones-aprender">
+              <select id="repeticiones-aprender"  class="opciones-container">
                 <option value="5">5</option>
                 <option value="10" selected>10</option>
                 <option value="15">15</option>
@@ -28,14 +28,14 @@
               </select>
             </label>
             <br><br>
-            <label>¿Cuántos puntos quieres que te reste un error?
+            <label>¿Cuántos puntos quieres que te reste un error?*
               <select id="error-aprender">
                 <option value="2">2</option>
                 <option value="5" selected>5</option>
                 <option value="10">10</option>
               </select>
             </label>
-            <p>Si te equivocas este será el valor del puntaje que perderás. Cuando llegues al puntaje máximo, ese kanji no se volverá a preguntar. Al final del intento, tendrás una lista con los kanji que más se te dificultaron en aprender.</p>
+            <p>*Si te equivocas éste será el valor del puntaje que perderás. Cuando llegues al puntaje máximo, ese kanji no se volverá a preguntar. Al final del intento, tendrás una lista con los kanji que más se te dificultaron en aprender.</p>
           </div>
           <div id="repasar-container" class="hidden opciones-container">
             <label>¿Cuántas veces repasar una palabra?
@@ -56,108 +56,15 @@
             <p>Si seleccionas esta opción, el kanji fallado vuelve a aparecer hasta 5 veces.<br>
             Si no seleccionas esta opción, cuando termines de repasar, vas a tener una lista con los kanjis que fallaste y podrás estudiarlos nuevamente.</p>
           </div>
-            <div id="kanji-container" class="hidden">
-            <!-- Grid 1 -->
-            <div class="grid" id="grid1">
-              <button type="button" class="kanji-btn" id="kanji1" data-kanji="人">人</button>
-              <button type="button" class="kanji-btn" id="kanji2" data-kanji="一">一</button>
-              <button type="button" class="kanji-btn" id="kanji3" data-kanji="日">日</button>
-              <button type="button" class="kanji-btn" id="kanji4" data-kanji="大">大</button>
-              <button type="button" class="kanji-btn" id="kanji5" data-kanji="年">年</button>
-              <button type="button" class="kanji-btn" id="kanji6" data-kanji="出">出</button>
-              <button type="button" class="kanji-btn" id="kanji7" data-kanji="本">本</button>
-              <button type="button" class="kanji-btn" id="kanji8" data-kanji="中">中</button>
-              <button type="button" class="kanji-btn" id="kanji9" data-kanji="子">子</button>
-              <button type="button" class="kanji-btn" id="kanji10" data-kanji="見">見</button>
-              <input type="checkbox" class="checkbox-set" id="checkbox1" name="set1">
-              <label for="checkbox1"></label>
-            </div>
-        
-            <!-- Grid 2 -->
-            <div class="grid" id="grid2">
-              <button type="button" class="kanji-btn" id="kanji11" data-kanji="国">国</button>
-              <button type="button" class="kanji-btn" id="kanji12" data-kanji="言">言</button>
-              <button type="button" class="kanji-btn" id="kanji13" data-kanji="上">上</button>
-              <button type="button" class="kanji-btn" id="kanji14" data-kanji="分">分</button>
-              <button type="button" class="kanji-btn" id="kanji15" data-kanji="生">生</button>
-              <button type="button" class="kanji-btn" id="kanji16" data-kanji="手">手</button>
-              <button type="button" class="kanji-btn" id="kanji17" data-kanji="自">自</button>
-              <button type="button" class="kanji-btn" id="kanji18" data-kanji="行">行</button>
-              <button type="button" class="kanji-btn" id="kanji19" data-kanji="者">者</button>
-              <button type="button" class="kanji-btn" id="kanji20" data-kanji="二">二</button>
-              <input type="checkbox" class="checkbox-set" id="checkbox2" name="set2">
-              <label for="checkbox2"></label>
-            </div>
-        
-            <!-- Grid 3 -->
-            <div class="grid" id="grid3">
-                <button type="button" class="kanji-btn" id="kanji21" data-kanji="小">小</button>
-                <button type="button" class="kanji-btn" id="kanji22" data-kanji="男">男</button>
-                <button type="button" class="kanji-btn" id="kanji23" data-kanji="外">外</button>
-                <button type="button" class="kanji-btn" id="kanji24" data-kanji="先">先</button>
-                <button type="button" class="kanji-btn" id="kanji25" data-kanji="東">東</button>
-                <button type="button" class="kanji-btn" id="kanji26" data-kanji="万">万</button>
-                <button type="button" class="kanji-btn" id="kanji27" data-kanji="北">北</button>
-                <button type="button" class="kanji-btn" id="kanji28" data-kanji="百">百</button>
-                <button type="button" class="kanji-btn" id="kanji29" data-kanji="土">土</button>
-                <button type="button" class="kanji-btn" id="kanji30" data-kanji="西">西</button>
-                <input type="checkbox" class="checkbox-set" id="checkbox3" name="set3">
-                <label for="checkbox3"></label>
-                </div>
-            <!-- Grid 4 -->
-            <div class="grid" id="grid4">
-                <button type="button" class="kanji-btn" id="kanji31" data-kanji="者">者</button>
-                <button type="button" class="kanji-btn" id="kanji32" data-kanji="方">方</button>
-                <button type="button" class="kanji-btn" id="kanji33" data-kanji="地">地</button>
-                <button type="button" class="kanji-btn" id="kanji34" data-kanji="合">合</button>
-                <button type="button" class="kanji-btn" id="kanji35" data-kanji="動">動</button>
-                <button type="button" class="kanji-btn" id="kanji36" data-kanji="社">社</button>
-                <button type="button" class="kanji-btn" id="kanji37" data-kanji="理">理</button>
-                <button type="button" class="kanji-btn" id="kanji38" data-kanji="同">同</button>
-                <button type="button" class="kanji-btn" id="kanji39" data-kanji="発">発</button>
-                <button type="button" class="kanji-btn" id="kanji40" data-kanji="実">実</button>
-                <input type="checkbox" class="checkbox-set" id="checkbox4" name="set4">
-                <label for="checkbox4"></label>
-                
-            </div>
-            <!-- Grid 5 -->
-            <div class="grid" id="grid5">
-                <button type="button" class="kanji-btn" id="kanji41" data-kanji="当">当</button>
-                <button type="button" class="kanji-btn" id="kanji42" data-kanji="新">新</button>
-                <button type="button" class="kanji-btn" id="kanji43" data-kanji="世">世</button>
-                <button type="button" class="kanji-btn" id="kanji44" data-kanji="度">度</button>
-                <button type="button" class="kanji-btn" id="kanji45" data-kanji="明">明</button>
-                <button type="button" class="kanji-btn" id="kanji46" data-kanji="戦">戦</button>
-                <button type="button" class="kanji-btn" id="kanji47" data-kanji="力">力</button>
-                <button type="button" class="kanji-btn" id="kanji48" data-kanji="性">性</button>
-                <button type="button" class="kanji-btn" id="kanji49" data-kanji="対">対</button>
-                <button type="button" class="kanji-btn" id="kanji50" data-kanji="意">意</button>
-                <input type="checkbox" class="checkbox-set" id="checkbox5" name="set5">
-                <label for="checkbox5"></label>
-                </div>
-             <!-- Grid 6 -->
-            <div class="grid" id="grid6">
-                <button type="button" class="kanji-btn" id="kanji51" data-kanji="用">用</button>
-                <button type="button" class="kanji-btn" id="kanji52" data-kanji="主">主</button>
-                <button type="button" class="kanji-btn" id="kanji53" data-kanji="通">通</button>
-                <button type="button" class="kanji-btn" id="kanji54" data-kanji="関">関</button>
-                <button type="button" class="kanji-btn" id="kanji55" data-kanji="文">文</button>
-                <button type="button" class="kanji-btn" id="kanji56" data-kanji="屋">屋</button>
-                <button type="button" class="kanji-btn" id="kanji57" data-kanji="感">感</button>
-                <button type="button" class="kanji-btn" id="kanji58" data-kanji="郎">郎</button>
-                <button type="button" class="kanji-btn" id="kanji59" data-kanji="定">定</button>
-                <button type="button" class="kanji-btn" id="kanji60" data-kanji="政">政</button>
-                <input type="checkbox" class="checkbox-set" id="checkbox6" name="set6">
-                <label for="checkbox6"></label>
-        
+            <div id="kanji-container" class="kanji-container hidden">        
             </div>   
         </div>     
         <div class="botones-container">
         <button class="submit-btn hidden" id="submit-btn">Empezar</button>
     </div>
     </div>
+
+
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
 </body>
-<script>
-   
-  </script>
-</html>
+  </html>
