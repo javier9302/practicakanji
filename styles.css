@@ -43,12 +43,74 @@ h1 {
     margin-bottom: 30px;
     font-weight: 600;
 }
+  .group-container{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 2.5s ease-out; 
+  }
+
+  .group-container.visible{
+    max-height: fit-content;
+
+  }
+
+  .header-group-container{
+    position: relative;
+    width: 800px;
+    display: flex;
+    justify-content: space-between;
+    margin: 15px;
+    }
+
+  .text-group-container{
+    display: flex;
+    align-items: center;
+  }
+  .checkbox-group-container{
+    min-width: 100px;
+  }
+
+
+  .toggle-group{
+    z-index: 1000; ;
+    display:flex;
+    height:50px;
+    overflow:hidden;
+    font-size:20px;
+    font-weight: 600;
+    border:0;
+    background-color:transparent;
+    cursor: pointer;
+  }
   
-.kanji-display {
-    font-size: 120px;
+  .toggle-group-text,
+  .toggle-group-icon 
+  {
+    display:flex;
+    align-items: center;
+    height:100%;  
+  }
+
+  .toggle-group-icon ion-icon{
+    font-size:1.5em;
+    rotate: 90deg;
+    color:#4a6fa5;
+    filter: drop-shadow(1px 1px 2px rgba(0, 0, 0, 0.4));
+    transition: transform 0.3s ease;
+  }
+  .toggle-group-icon.rotate ion-icon {
+    transform: rotate(-90deg);
+  }
+
+.kanji-container {
     text-align: center;
     margin: 20px 0;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     background-color: white;
@@ -60,15 +122,14 @@ h1 {
     flex: 1;
     min-width: 300px;
     background-color: #f8f9fa;
-    padding: 10px;
     border-radius: 12px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(50px,1fr));
     gap: 15px;
     position: relative;
-    margin-bottom: 5px;
-    
+    margin-bottom: 10px;    
+    max-width: 800px;    
 }
 
 .grid input[type="checkbox"] {
@@ -270,6 +331,18 @@ h1 {
     display: none;
 }
 
+.kanji-display {
+  font-size: 120px;
+  text-align: center;
+  margin: 20px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
 /* Checkbox styles*/
 /* Hide the default checkbox */
 .checkbox-set {
@@ -284,7 +357,6 @@ h1 {
   .checkbox-set + label {
     display:inline-flex;
     position: relative;
-    padding-left: 32px;
     cursor: pointer;
     align-items: center;
     font-size: 1rem;
@@ -299,7 +371,7 @@ h1 {
   .checkbox-set + label:before {
     content: '';
     position: absolute;
-    left: 0;
+    left: -50%;
     top: 50%;
     transform: translateY(-50%);
     width: 22px;
@@ -312,19 +384,7 @@ h1 {
   
   
   /* Checkmark (hidden by default) */
-  .checkbox-set + label:after {
-    content: '';
-    position: absolute;
-    left: 7px; /* Adjusted position */
-    top: 50%; /* Center vertically */
-    width: 6px;
-    height: 12px;
-    border: solid white;
-    border-width: 0 2px 2px 0; /* Thinner checkmark */
-    transform: translateY(-50%) rotate(45deg); /* Perfect centering */
-    opacity: 0;
-    transition: all 0.2s ease;
-  }
+ 
   
   /* When checkbox is checked */
   .checkbox-set:checked + label:before {
