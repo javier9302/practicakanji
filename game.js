@@ -1,6 +1,6 @@
 let palabraAleatoria;
-
-let matchedWords = JSON.parse(localStorage.getItem('matchedWords'))||[];
+const originalData = JSON.parse(localStorage.getItem('originalData'))||[];
+let matchedWords = JSON.parse(JSON.stringify(originalData));
 const modalidad = JSON.parse(localStorage.getItem('modalidadEscogida'));
 
 const puntosError= parseInt(modalidad.puntosError);
@@ -22,18 +22,23 @@ const puntajeMaximo=parseInt(modalidad.puntajemaximo);
     }
 
     function cargarKanji() {
+   
         if (!matchedWords || matchedWords.length===0) {
        
         console.log('No hay palabras para mostrar');
         const kanjiDisplay = document.getElementById('kanji-display');
         if (kanjiDisplay){
-        kanjiDisplay.textContent = 'No hay kanjis para practicar';
+        kanjiDisplay.textContent = '¡Felicitaciones! Has completado tus kanjis de hoy';
         kanjiDisplay.style.fontSize='24px';
         kanjiDisplay.style.height='30%';
         toggleVisibility("answer-input", false);
         toggleVisibility("checkbox-container", false);
         toggleVisibility("checkbox-container-bottom", false);
         toggleVisibility("verificar-hiragana", false);
+        toggleVisibility("reiniciar", true);
+        toggleVisibility("nuevas", true);
+        toggleVisibility("siguiente-palabra", false);
+
         }
         return;
     }
@@ -55,8 +60,9 @@ const puntajeMaximo=parseInt(modalidad.puntajemaximo);
     toggleVisibility("checkbox-container", false);
     toggleVisibility("checkbox-container-bottom", false);
     toggleVisibility("verificar-hiragana", true);
-    
- }
+    toggleVisibility("reiniciar", false);
+    toggleVisibility("nuevas", false);
+}
     function verificar(){
         const input = document.getElementById("answer-input").value.trim();
         if (!input) return;
@@ -96,9 +102,16 @@ const puntajeMaximo=parseInt(modalidad.puntajemaximo);
 
       function siguiente(){
         if (document.getElementById("palabra-aprendida").checked) {
-            palabraAleatoria.puntaje= puntajeMaximo;    
+            palabraAleatoria.puntaje = puntajeMaximo;    
+            matchedWords = matchedWords.filter(p => p.kanji !== palabraAleatoria.kanji);
             updateProgress();
         }
         cargarKanji();
       }
+        function reiniciar(){
+            location.reload();
+        }
+        function nueva() {
+            window.location.href = 'index.html';
+          }
     cargarKanji();
