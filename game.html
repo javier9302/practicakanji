@@ -9,7 +9,7 @@
 <body>
   <body>
   <div class="main-container">
-    <h1 style="text-align: center;">Aplicacion para aprender Kanji</h1>
+    <h1 style="text-align: center;">Practica Kanji</h1>
     <div class="dividir-pantalla">
       <div class="lado-izquierdo">
       <div class="kanji-display" id="kanji-display">
@@ -20,7 +20,7 @@
          <!-- IZQUIERDA -->
         
           <div class="input-group">
-            <input type="text" id="answer-input" placeholder="ひらがな..." autocomplete="off" onkeydown="checkEnter(event)">
+            <input type="text" id="answer-input" placeholder="Escribe aquí..." autocomplete="off" onkeydown="checkEnter(event)">
             <div class="botones-container">
               <button onclick="verificar()" class="submit-btn" id="verificar-hiragana">Verificar</button>
               <button onclick="siguiente()" class="submit-btn" id="siguiente-palabra">Siguiente</button>
@@ -50,8 +50,8 @@
 
       </div>
       <div class="botones-container">
-        <button Id="reiniciar" class="submit-btn fin-juego-btn">Reiniciar</button>
-        <button id="nuevas" class="submit-btn fin-juego-btn">Nuevas Palabras</button>
+        <button onclick="reiniciar()" Id="reiniciar" class="submit-btn fin-juego-btn">Reiniciar</button>
+        <a href="index.html"><button Id="nuevas" class="submit-btn fin-juego-btn">Nuevas Palabras</button></a>
       </div>
       </div> <!-- Fin dividir-pantalla -->
 

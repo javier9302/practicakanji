@@ -1,4 +1,5 @@
-import wordData from './kanji.js';
+import wordData from './kanji-data.js';
+import kanjiListJoyo from './listas-palabras.js';
 
 document.addEventListener('DOMContentLoaded', () => {
   
@@ -13,7 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
     repasarDiv: document.getElementById('repasar-container'),
     submitBtn: document.getElementById('submit-btn'),
     wordData,
-    uniqueKanji:[...new Map(wordData.map(obj => [obj.kanji, obj])).values()]
+    kanjiListJoyo,
   };
 
    // Estado simplificado
@@ -24,7 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
       return document.querySelectorAll('.kanji-btn-disabled').length;
     },
     get enabledKanjiCount() {
-      return elements.uniqueKanji.length - this.disabledKanjiCount;
+      return state.selectedKanji.length;
     },
     get maxCheckboxes() {
       return this.disabledKanjiCount 
@@ -113,8 +114,8 @@ document.addEventListener('DOMContentLoaded', () => {
           const btn = createElement('button',{
             type: 'button',
             class: 'kanji-btn kanji-btn-disabled',
-            textContent:kanji.kanji,
-            'data-kanji': kanji.kanji
+            textContent:kanji,
+            'data-kanji': kanji
           });
 
           currentGrid.appendChild(btn);
@@ -124,12 +125,14 @@ document.addEventListener('DOMContentLoaded', () => {
       };
   //Crea los botones en cada grid
       const crearBotones = () => {
+        
         elements.kanjiContainer.innerHTML = '';
-        const uniqueKanji= elements.uniqueKanji;
+        const kanjiList= elements.kanjiListJoyo;
+        console.log(kanjiList);
        // Dividir en grupos de 100
        const kanjiGroups = [];
-    for (let i = 0; i < uniqueKanji.length; i += 100) {
-       kanjiGroups.push(uniqueKanji.slice(i, i + 100));
+    for (let i = 0; i < kanjiList.length; i += 100) {
+       kanjiGroups.push(kanjiList.slice(i, i + 100));
     }
 
     kanjiGroups.forEach((group, groupIndex) => {
@@ -261,12 +264,31 @@ document.addEventListener('DOMContentLoaded', () => {
     
     localStorage.setItem('modalidadEscogida', JSON.stringify(modalidadEscogida));
     
-    const originalData = wordData
-      .filter(word => state.selectedKanji.includes(word.kanji))
-      .map(word => ({ ...word, puntaje: 0 }));
+    function getTopWords(entry, limit = 3) {
+      const words = entry.words || [];
+    
+      const coreWords = words.filter(w => w.comun === 'Si' && w.lista === 'core6000');
+      if (coreWords.length>3) return coreWords.slice(0, limit);
+    
+      const commonWords = words.filter(w => w.comun === 'Si');
+      if (commonWords.length>3) return commonWords.slice(0, limit);
+    
+      return words.slice(0, limit);
+    }
+    
+    const uniqueKanji = [...new Set(state.selectedKanji)];
+    
+    const newFilteredArray = uniqueKanji
+      .map(kanji => {
+        const entry = wordData.find(e => e.kanji === kanji);
+        return entry ? { kanji, words: getTopWords(entry)} : null;
+      })
+      .filter(Boolean);
+     
     console.log(state);
-      console.log(originalData);
-    localStorage.setItem('originalData', JSON.stringify(originalData));
+    console.log(newFilteredArray);
+    localStorage.setItem('newFilteredArray', JSON.stringify(newFilteredArray));
+
     window.location.href = 'game.html';
   };
 
