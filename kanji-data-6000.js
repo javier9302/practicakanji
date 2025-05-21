@@ -1,4 +1,4 @@
-export const wordData = [
+const wordData = [
 {
 "palabra": "それ",
 "lectura": "それ",
@@ -35790,4 +35790,6 @@ export const wordData = [
 "partesDelHabla": "Noun"
 }
 ];
+
+export default wordData;
 
