@@ -265,19 +265,19 @@ document.addEventListener('DOMContentLoaded', () => {
     localStorage.setItem('modalidadEscogida', JSON.stringify(modalidadEscogida));
     
     function getTopWords(entry, target) {
-    const words = entry.words || [];
-
-  return words.find(w => w.kanji === target || w.reading === target) || null;
+     return wordData.find(w => w.palabra === target || w.lectura === target) || null;
     }
     
     const uniqueKanji = [...new Set(state.selectedKanji)];
     
-    const newFilteredArray = uniqueKanji
-      .map(kanji => {
-        const entry = wordData.find(e => e.kanji === kanji);
-        return entry ? { kanji, words: getTopWords(entry)} : null;
-      })
-      .filter(Boolean);
+    const newFilteredArray = state.selectedKanji
+  .map(kanji => {
+    const matchingWords = wordData.filter(w => w.palabra === kanji || w.lectura === kanji);
+    return matchingWords.length
+      ? { kanji, words: matchingWords }
+      : null;
+  })
+  .filter(Boolean);
      
     console.log(state);
     console.log(newFilteredArray);
