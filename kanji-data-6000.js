@@ -1,4 +1,4 @@
-export default const wordData = [
+export const wordData = [
 {
 "palabra": "それ",
 "lectura": "それ",
