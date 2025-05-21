@@ -252,38 +252,34 @@ document.addEventListener('DOMContentLoaded', () => {
   };
  
   const handleSubmit = () => {
-    const modalidadEscogida = state.modo === 40
-      ? {
-          puntajemaximo: document.getElementById('repeticiones-aprender').value,
-          puntosError: document.getElementById('repasar-veces').value
-        }
-      : {
-          puntajemaximo: document.getElementById('repasar-veces').value,
-          puntosError: document.querySelector('#repasar-errores').checked ? 1 : 0
-        };
-    
-    localStorage.setItem('modalidadEscogida', JSON.stringify(modalidadEscogida));
-    
-    function getTopWords(entry, target) {
-     return wordData.find(w => w.palabra === target || w.lectura === target) || null;
-    }
-    
-    const uniqueKanji = [...new Set(state.selectedKanji)];
-    
-const newFilteredArray = state.selectedKanji
-  .map(kanji => {
-    const topWord = getTopWords(null, kanji); 
-    return topWord
-      ? { kanji, word: topWord }  
-      : null;
-  })
-  .filter(Boolean);
-    console.log(state);
-    console.log(newFilteredArray);
-    localStorage.setItem('newFilteredArray', JSON.stringify(newFilteredArray));
-
-    window.location.href = 'game.html';
-  };
+  const modalidadEscogida = state.modo === 40
+    ? {
+        puntajemaximo: document.getElementById('repeticiones-aprender').value,
+        puntosError: document.getElementById('repasar-veces').value
+      }
+    : {
+        puntajemaximo: document.getElementById('repasar-veces').value,
+        puntosError: document.querySelector('#repasar-errores').checked ? 1 : 0
+      };
+  
+  localStorage.setItem('modalidadEscogida', JSON.stringify(modalidadEscogida));
+  
+  // Obtener palabras seleccionadas directamente de wordData
+  const selectedWords = wordData.filter(word => 
+    state.selectedKanji.includes(word.palabra) || 
+    state.selectedKanji.includes(word.lectura)
+  );
+  
+  console.log('Palabras seleccionadas:', selectedWords);
+  
+  if (selectedWords.length === 0) {
+    alert('No se encontraron las palabras seleccionadas en la base de datos');
+    return;
+  }
+  
+  localStorage.setItem('selectedWords', JSON.stringify(selectedWords));
+  window.location.href = 'game.html';
+};
 
   // Inicialización
   crearBotones();
