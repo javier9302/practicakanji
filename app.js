@@ -264,16 +264,10 @@ document.addEventListener('DOMContentLoaded', () => {
     
     localStorage.setItem('modalidadEscogida', JSON.stringify(modalidadEscogida));
     
-    function getTopWords(entry, limit = 3) {
-      const words = entry.words || [];
-    
-      const coreWords = words.filter(w => w.comun === 'Si' && w.lista === 'core6000');
-      if (coreWords.length>3) return coreWords.slice(0, limit);
-    
-      const commonWords = words.filter(w => w.comun === 'Si');
-      if (commonWords.length>3) return commonWords.slice(0, limit);
-    
-      return words.slice(0, limit);
+    function getTopWords(entry, target) {
+    const words = entry.words || [];
+
+  return words.find(w => w.kanji === target || w.reading === target) || null;
     }
     
     const uniqueKanji = [...new Set(state.selectedKanji)];
