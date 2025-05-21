@@ -12,7 +12,7 @@ const puntajeMaximo = parseInt(modalidad.puntajemaximo);
 let palabrasJuego = matchedWords.flatMap(item =>
   item.words.map(word => ({
     ...word,
-    kanji: item.kanji,
+    kanji: item.palabra,
     puntaje: 0,
   }))
 );
