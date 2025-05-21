@@ -1,4 +1,4 @@
-const kanjiListJoyo= [
+const kanjiList6000= [
 "それ",
 "これ",
 "なる",
@@ -5965,4 +5965,4 @@ const kanjiListJoyo= [
 "騙す",
 "便箋"
 ];
-export default kanjiListJoyo;
+export default kanjiList6000;
