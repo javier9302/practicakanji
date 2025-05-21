@@ -1,5 +1,5 @@
 import wordData from './kanji-data-6000.js';
-import kanjiList6000 from './listas-palabras-6000.js';
+import kanjiList6000 from './lista-palabras-6000.js';
 
 document.addEventListener('DOMContentLoaded', () => {
   
