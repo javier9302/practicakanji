@@ -1,4 +1,4 @@
-export const wordData = [
+export default const wordData = [
 {
 "palabra": "それ",
 "lectura": "それ",
@@ -35789,4 +35789,5 @@ export const wordData = [
 "traduccion": "letter paper, stationery",
 "partesDelHabla": "Noun"
 }
-]
+];
+
