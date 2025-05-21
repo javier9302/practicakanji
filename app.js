@@ -270,15 +270,14 @@ document.addEventListener('DOMContentLoaded', () => {
     
     const uniqueKanji = [...new Set(state.selectedKanji)];
     
-    const newFilteredArray = state.selectedKanji
+const newFilteredArray = state.selectedKanji
   .map(kanji => {
-    const matchingWords = wordData.filter(w => w.palabra === kanji || w.lectura === kanji);
-    return matchingWords.length
-      ? { kanji, words: matchingWords }
+    const topWord = getTopWords(null, kanji); 
+    return topWord
+      ? { kanji, word: topWord }  
       : null;
   })
   .filter(Boolean);
-     
     console.log(state);
     console.log(newFilteredArray);
     localStorage.setItem('newFilteredArray', JSON.stringify(newFilteredArray));
