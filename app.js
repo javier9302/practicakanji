@@ -1,5 +1,5 @@
 import wordData from './kanji-data-6000.js';
-import kanjiListJoyo from './listas-palabras-6000.js';
+import kanjiList6000 from './listas-palabras-6000.js';
 
 document.addEventListener('DOMContentLoaded', () => {
   
@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
     repasarDiv: document.getElementById('repasar-container'),
     submitBtn: document.getElementById('submit-btn'),
     wordData,
-    kanjiListJoyo,
+    kanjiList6000,
   };
 
    // Estado simplificado
@@ -127,7 +127,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const crearBotones = () => {
         
         elements.kanjiContainer.innerHTML = '';
-        const kanjiList= elements.kanjiListJoyo;
+        const kanjiList= elements.kanjiList6000;
         console.log(kanjiList);
        // Dividir en grupos de 100
        const kanjiGroups = [];
