@@ -85,12 +85,12 @@ function verificar() {
   const input = document.getElementById("answer-input").value.trim();
   if (!input) return;
 
-  const esCorrecto = input === palabraAleatoria.hiragana;
+  const esCorrecto = input === palabraAleatoria.lectura;
   const feedback = document.getElementById('feedback');
-  feedback.textContent = esCorrecto ? '¡Correcto!' : `Incorrecto. Era: ${palabraAleatoria.hiragana}`;
+  feedback.textContent = esCorrecto ? '¡Correcto!' : `Incorrecto. Era: ${palabraAleatoria.lectura}`;
 
   // Mostrar hiragana y traducción
-  document.getElementById('hiragana-display').textContent = palabraAleatoria.hiragana;
+  document.getElementById('hiragana-display').textContent = palabraAleatoria.lectura;
   document.getElementById('meaning-display').textContent = palabraAleatoria.traduccion;
   // Si se añaden ejemplos - Descomentar
   // document.getElementById('example-display').textContent = palabraAleatoria.ejemploJP;
