@@ -10,14 +10,10 @@ const puntosError = parseInt(modalidad.puntosError);
 const puntajeMaximo = parseInt(modalidad.puntajemaximo);
 
 // Aplanar los datos para obtener una lista de palabras con sus kanjis y puntajes
-let palabrasJuego = matchedWords.flatMap(item =>
-  item.words.map(word => ({
-    ...word,
-    kanji: item.palabra,
-    puntaje: 0,
-  }))
-);
-
+let palabrasJuego = matchedWords.map(word => ({
+  ...word,
+  puntaje: 0,
+}));
 
 // Función para mostrar u ocultar elementos
 function toggleVisibility(id, show) {
