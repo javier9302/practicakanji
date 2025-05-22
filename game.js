@@ -1,7 +1,7 @@
 let palabraAleatoria;
 
 // Cargar datos desde localStorage
-const originalData = JSON.parse(localStorage.getItem('newFilteredArray')) || [];
+const originalData = JSON.parse(localStorage.getItem('selectedWords')) || [];
 let matchedWords = JSON.parse(JSON.stringify(originalData));
 const modalidad = JSON.parse(localStorage.getItem('modalidadEscogida'));
 
