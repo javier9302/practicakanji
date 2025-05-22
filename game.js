@@ -5,6 +5,7 @@ const originalData = JSON.parse(localStorage.getItem('selectedWords')) || [];
 let matchedWords = JSON.parse(JSON.stringify(originalData));
 const modalidad = JSON.parse(localStorage.getItem('modalidadEscogida'));
 
+console.log(originalData);
 const puntosError = parseInt(modalidad.puntosError);
 const puntajeMaximo = parseInt(modalidad.puntajemaximo);
 
